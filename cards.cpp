@@ -193,6 +193,7 @@ Hand class
 /* *************************************************
 Player class
 ************************************************* */
+//Default constructor
 Player::Player() {
 	money = 100;
 }
@@ -201,10 +202,12 @@ Player::Player(int pesos) {
 	money = pesos;
 }
 
+//Gets the amount of money the player has
 int Player::get_money() {
 	int amount = money;
 }
 
+//Updates the amount of money the player has
 void Player::update_money(int update) {
 	money = update;
 }
