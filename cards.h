@@ -74,10 +74,11 @@ class Player {
 public:
 	// Constructor. 
 	//    Assigns initial amount of money
+	Player();
 	Player(int m);
-
 	// You decide what functions you'll need...
-
+	int get_money();
+	void update_money();
 private:
 	int money;
 	// You decide what extra fields (if any) you'll need...
