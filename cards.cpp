@@ -177,6 +177,13 @@ int Card::get_rank() const {
 	return static_cast<int>(rank) + 1;
 }
 
+double Card::get_value() const {
+	if ((*this).get_rank() >= 10)
+		return 0.5;
+	else
+		return (*this).get_rank();
+}
+
 // Comparison operator for cards
 // Returns TRUE if card1 < card2
 bool Card::operator < (Card card2) const {
@@ -188,11 +195,113 @@ bool Card::operator < (Card card2) const {
 /* *************************************************
 Hand class
 ************************************************* */
-// Implemente the member functions of the Hand class here.
+Hand::Hand() {
+	Card first_card;
+	deck.push_back(first_card);
+	hand_value = first_card.get_value();
+}
+
+void Hand::add_card() {
+	Card new_card;
+	(*this).deck.push_back(new_card);
+	hand_value += new_card.get_value();
+}
+
+double Hand::get_value() {
+	return static_cast<double> ((*this).hand_value);
+}
+
+string Hand::get_card_suit(int m) {
+	return ((*this).deck[m].get_english_suit());
+}
+
+string Hand::get_card_rank(int m) {
+	return (*this).deck[m].get_english_rank();
+}
+
+bool Hand::play() {
+	int counter = 0;
+	bool another_card = true;
+	while (another_card) {
+		char c;
+		if ((*this).get_value() < 7.5) {
+			cout << "Do you want another card (y/n)?";
+		}
+		else {
+			cout << "You busted.";
+			return false;
+		}
+		cin >> c;
+		if (c == 'y') {
+			another_card = true;
+			counter++;
+		}
+		else {
+			another_card = false;
+			break;
+		}
+		(*this).add_card();
+		cout << "Your cards: " << endl;
+
+		cout << (*this).get_card_rank(counter) << "of " << (*this).get_card_suit(counter) << endl;
+		cout << "Your total is " << (*this).get_value() << endl;
+	}
+
+	Hand dealer_hand;
+	int dealer_counter = 0;
+	cout << "Dealer cards: " << endl;
+	cout << dealer_hand.get_card_rank(0) << " of " << dealer_hand.get_card_suit(0) << endl;
+	cout << "Dealer total is " << dealer_hand.get_value() << ".";
+
+	while (dealer_hand.get_value() < 5.5) {
+
+		dealer_counter++;
+		dealer_hand.add_card();
+		cout << "Dealer cards: " << endl;
+
+		cout << dealer_hand.get_card_rank(dealer_counter) << "of " << dealer_hand.get_card_suit(dealer_counter) << endl;
+		cout << "Dealer total is " << dealer_hand.get_value() << ".";
+		if (dealer_hand.get_value() > 7.5) {
+			cout << "Dealer busted.";
+			return true;
+		}
+	}
+	if ((*this).get_value() <= 7.5 && dealer_hand.get_value() <= 7.5) {
+		if ((7.5 - (*this).get_value()) <= (7.5 - dealer_hand.get_value())) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+}
 
 
 
 /* *************************************************
 Player class
 ************************************************* */
-// Implemente the member functions of the Player class here.
+//Default constructor
+Player::Player() {
+	money = 100;
+}
+
+Player::Player(int pesos) {
+	money = pesos;
+}
+
+//Gets the amount of money the player has
+int Player::get_money() {
+	return money;
+}
+
+//Updates the amount of money the player has
+void Player::add_money(int update) {
+	money += update;
+	return;
+}
+
+void Player::lose_money(int update) {
+	money -= update;
+	return;
+}
