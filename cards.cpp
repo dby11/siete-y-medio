@@ -219,6 +219,63 @@ string Hand::get_card_rank(int m) {
 	return (*this).deck[m].get_english_rank();
 }
 
+bool Hand::play() {
+	int counter = 0;
+	bool another_card = true;
+	while (another_card) {
+		char c;
+		if ((*this).get_value() < 7.5) {
+			cout << "Do you want another card (y/n)?";
+		}
+		else {
+			cout << "You busted.";
+			return false;
+		}
+		cin >> c;
+		if (c == 'y') {
+			another_card = true;
+			counter++;
+		}
+		else {
+			another_card = false;
+			break;
+		}
+		(*this).add_card();
+		cout << "Your cards: " << endl;
+
+		cout << (*this).get_card_rank(counter) << "of " << (*this).get_card_suit(counter) << endl;
+		cout << "Your total is " << (*this).get_value() << endl;
+	}
+
+	Hand dealer_hand;
+	int dealer_counter = 0;
+	cout << "Dealer cards: " << endl;
+	cout << dealer_hand.get_card_rank(0) << " of " << dealer_hand.get_card_suit(0) << endl;
+	cout << "Dealer total is " << dealer_hand.get_value() << ".";
+
+	while (dealer_hand.get_value() < 5.5) {
+
+		dealer_counter++;
+		dealer_hand.add_card();
+		cout << "Dealer cards: " << endl;
+
+		cout << dealer_hand.get_card_rank(dealer_counter) << "of " << dealer_hand.get_card_suit(dealer_counter) << endl;
+		cout << "Dealer total is " << dealer_hand.get_value() << ".";
+		if (dealer_hand.get_value() > 7.5) {
+			cout << "Dealer busted.";
+			return true;
+		}
+	}
+	if ((*this).get_value() <= 7.5 && dealer_hand.get_value() <= 7.5) {
+		if ((7.5 - (*this).get_value()) <= (7.5 - dealer_hand.get_value())) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+}
+
 
 
 /* *************************************************

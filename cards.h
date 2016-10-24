@@ -66,6 +66,7 @@ public:
 	double get_value();
 	string get_card_rank(int m);
 	string get_card_suit(int m);
+	bool play();
 	// You decide what functions you'll need...
 
 private:
