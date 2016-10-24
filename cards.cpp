@@ -191,10 +191,8 @@ bool Card::operator < (Card card2) const {
 }
 
 
+/* Hand Class*/
 
-/* *************************************************
-Hand class
-************************************************* */
 Hand::Hand() {
 	Card first_card;
 	deck.push_back(first_card);
