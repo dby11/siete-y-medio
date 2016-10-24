@@ -98,13 +98,13 @@ int main() {
 				break;
 			}
 		}
-		if (player_hand.get_value() < 7.5 && dealer_hand.get_value() < 7.5) {
+		if (player_hand.get_value() <= 7.5 && dealer_hand.get_value() <= 7.5) {
 			if ((7.5 - player_hand.get_value()) <= (7.5 - dealer_hand.get_value())) {
 				win = true;
 			} else {
 				win = false;
 			}
-		}
+		} 
 
 		if (win) {
 			cout << "You win $" << bet << endl;
