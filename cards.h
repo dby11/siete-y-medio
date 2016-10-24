@@ -83,7 +83,8 @@ public:
 	Player(int m);
 	// You decide what functions you'll need...
 	int get_money();
-	void update_money(int m);
+	void add_money(int m);
+	void lose_money(int m);
 private:
 	int money;
 	// You decide what extra fields (if any) you'll need...

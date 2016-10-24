@@ -239,7 +239,12 @@ int Player::get_money() {
 }
 
 //Updates the amount of money the player has
-void Player::update_money(int update) {
+void Player::add_money(int update) {
 	money += update;
+	return;
+}
+
+void Player::lose_money(int update) {
+	money -= update;
 	return;
 }

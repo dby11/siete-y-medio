@@ -100,10 +100,10 @@ int main() {
 
 		if (win) {
 			cout << "You win $" << bet << endl;
-			player.update_money(bet);
+			player.add_money(bet);
 		} else {
 			cout << "You lose $" << bet << endl;
-			player.update_money(-bet);
+			player.lose_money(-bet);
 		}
 
 		cout << "You win $" << bet << endl; 
