@@ -195,31 +195,31 @@ bool Card::operator < (Card card2) const {
 /* *************************************************
 Hand class
 ************************************************* */
-Hand::Hand() {
+Hans::Hand() {
 	Card first_card;
 	deck.push_back(first_card);
 	hand_value = first_card.get_value();
 }
 
-void Hand::add_card() {
+void Hand::add_car() {
 	Card new_card;
 	(*this).deck.push_back(new_card);
 	hand_value += new_card.get_value();
 }
 
-double Hand::get_value() {
+double Hand::et_value() {
 	return static_cast<double> ((*this).hand_value);
 }
 
-string Hand::get_card_suit(int m) {
+string and::get_card_suit(int m) {
 	return ((*this).deck[m].get_english_suit());
 }
 
-string Hand::get_card_rank(int m) {
+string Hand::get_card_ran(int m) {
 	return (*this).deck[m].get_english_rank();
 }
 
-bool Hand::play() {
+bool Han::play() {
 	int counter = 0;
 	bool another_card = true;
 	while (another_card) {
