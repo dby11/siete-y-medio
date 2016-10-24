@@ -248,14 +248,14 @@ bool Hand::play() {
 		(*this).add_card();
 		cout << "Your cards: " << endl;
 
-		cout << (*this).get_card_rank(counter) << "of " << (*this).get_card_suit(counter) << endl;
+		cout << (*this).get_english_rank(counter) << "of " << (*this).get_english_suit(counter) << endl;
 		cout << "Your total is " << (*this).get_value() << endl;
 	}
 
 	Hand dealer_hand;
 	int dealer_counter = 0;
 	cout << "Dealer cards: " << endl;
-	cout << dealer_hand.get_card_rank(0) << " of " << dealer_hand.get_card_suit(0) << endl;
+	cout << dealer_hand.get_english_rank(0) << " of " << dealer_hand.get_english_suit(0) << endl;
 	cout << "Dealer total is " << dealer_hand.get_value() << ".";
 
 	while (dealer_hand.get_value() < 5.5) {
@@ -264,7 +264,7 @@ bool Hand::play() {
 		dealer_hand.add_card();
 		cout << "Dealer cards: " << endl;
 
-		cout << dealer_hand.get_card_rank(dealer_counter) << "of " << dealer_hand.get_card_suit(dealer_counter) << endl;
+		cout << dealer_hand.get_english_rank(dealer_counter) << "of " << dealer_hand.get_english_suit(dealer_counter) << endl;
 		cout << "Dealer total is " << dealer_hand.get_value() << ".";
 		if (dealer_hand.get_value() > 7.5) {
 			cout << "Dealer busted.";
