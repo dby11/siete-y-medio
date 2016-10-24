@@ -193,15 +193,13 @@ bool Card::operator < (Card card2) const {
 
 /* Hand Class*/
 
-//Hmm...
-Hans::Hand() {
+Hand::Hand() {
 	Card first_card;
 	deck.push_back(first_card);
 	hand_value = first_card.get_value();
 }
 
-//This doesn't look right
-void Hand::add_car() {
+void Hand::add_card() {
 	Card new_card;
 	(*this).deck.push_back(new_card);
 	hand_value += new_card.get_value();
