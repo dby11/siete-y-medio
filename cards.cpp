@@ -177,13 +177,6 @@ int Card::get_rank() const {
 	return static_cast<int>(rank) + 1;
 }
 
-double Card::get_value() const {
-	if ((*this).get_rank() >= 10)
-		return 0.5;
-	else
-		return (*this).get_rank();
-}
-
 // Comparison operator for cards
 // Returns TRUE if card1 < card2
 bool Card::operator < (Card card2) const {
@@ -196,24 +189,38 @@ bool Card::operator < (Card card2) const {
 Hand::Hand() {
 	Card first_card;
 	deck.push_back(first_card);
-	hand_value = first_card.get_value();
+	int rank = first_card.get_rank();
+	if (rank >= 10) {
+		hand_value = 0.5;
+	}
+	else {
+		hand_value = rank;
+	}
 }
 
 void Hand::add_card() {
 	Card new_card;
+	double new_value;
 	(*this).deck.push_back(new_card);
-	hand_value += new_card.get_value();
+	int rank = new_card.get_rank();
+	if (rank >= 10) {
+		new_value = 0.5;
+	}
+	else {
+		new_value = rank;
+	}
+	hand_value += new_value;
 }
 
 double Hand::get_value() {
 	return static_cast<double> ((*this).hand_value);
 }
 
-string Hand::get_card_suit(int m) {
+string Hand::get_english_suit(int m) {
 	return ((*this).deck[m].get_english_suit());
 }
 
-string Hand::get_card_rank(int m) {
+string Hand::get_english_rank(int m) {
 	return (*this).deck[m].get_english_rank();
 }
 

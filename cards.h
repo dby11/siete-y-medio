@@ -1,9 +1,3 @@
-/* *************************************
-Ricardo Salazar, February 26, 2015
-
-Interface of a simple Card class
-************************************* */
-
 #include <string>
 #include <vector>
 
@@ -34,18 +28,12 @@ public:
 	string get_spanish_suit() const;
 	string get_spanish_rank() const;
 
-	/*
-	These are the only functions you'll need to code
-	for this class. See the implementations of the two
-	functions above to get an idea of how to proceed.
-	*/
 	string get_english_suit() const;
 	string get_english_rank() const;
 
 	// Converts card rank to number.
 	// The possible returns are: 1, 2, 3, 4, 5, 6, 7, 10, 11 and 12
 	int get_rank() const;
-	double get_value() const;
 
 	// Compare rank of two cards. E.g: Eight<Jack is true.
 	// Assume Ace is always 1. 
@@ -64,8 +52,8 @@ public:
 	Hand();
 	void add_card();
 	double get_value();
-	string get_card_rank(int m);
-	string get_card_suit(int m);
+	string get_english_rank(int m);
+	string get_english_suit(int m);
 	bool play();
 	// You decide what functions you'll need...
 
