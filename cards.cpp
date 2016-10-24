@@ -177,8 +177,8 @@ int Card::get_rank() const {
 	return static_cast<int>(rank) + 1;
 }
 
-double Card::get_value() cosnt {
-	if (*this).get_rank() >= 10
+double Card::get_value() const {
+	if ((*this).get_rank() >= 10)
 		return 0.5;
 	else
 		return (*this).get_rank();
@@ -207,6 +207,19 @@ void Hand::add_card() {
 	hand_value += new_card.get_value();
 }
 
+double Hand::get_value() {
+	return static_cast<double> ((*this).hand_value);
+}
+
+string Hand::get_card_suit(int m) {
+	return ((*this).deck[m].get_english_suit());
+}
+
+string Hand::get_card_rank(int m) {
+	return (*this).deck[m].get_english_rank();
+}
+
+
 
 /* *************************************************
 Player class
@@ -222,10 +235,11 @@ Player::Player(int pesos) {
 
 //Gets the amount of money the player has
 int Player::get_money() {
-	int amount = money;
+	return money;
 }
 
 //Updates the amount of money the player has
 void Player::update_money(int update) {
-	money = update;
+	money += update;
+	return;
 }

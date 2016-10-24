@@ -6,7 +6,6 @@ Interface of a simple Card class
 
 #include <string>
 #include <vector>
-#include <fstream>
 
 #ifndef CARDS_H
 #define CARDS_H
@@ -64,7 +63,9 @@ public:
 	// A vector of Cards
 	Hand();
 	void add_card();
-
+	double get_value();
+	string get_card_rank(int m);
+	string get_card_suit(int m);
 	// You decide what functions you'll need...
 
 private:
@@ -82,7 +83,7 @@ public:
 	Player(int m);
 	// You decide what functions you'll need...
 	int get_money();
-	void update_money();
+	void update_money(int m);
 private:
 	int money;
 	// You decide what extra fields (if any) you'll need...
